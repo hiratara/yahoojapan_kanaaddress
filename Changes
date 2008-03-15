@@ -1,5 +1,8 @@
 Revision history for WWW-YahooJapan-KanaAddress
 
+0.1.1  Sun Mar 16 00:04:24 2008
+       fix the problem that perlcritic test was failed 
+       if you don't have Test/Perl/Critic.pm.
+
 0.1.0  Sat Mar 15 14:35:22 2008
        Initial release.
-
