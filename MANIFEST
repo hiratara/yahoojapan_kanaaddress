@@ -3,10 +3,10 @@ Changes
 lib/WWW/YahooJapan/KanaAddress.pm
 Makefile.PL
 MANIFEST
+META.yml
 README
 t/00.load.t
 t/kana_address.t
 t/perlcritic.t
 t/pod-coverage.t
 t/pod.t
-META.yml

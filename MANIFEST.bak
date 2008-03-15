@@ -3,6 +3,7 @@ Changes
 lib/WWW/YahooJapan/KanaAddress.pm
 Makefile.PL
 MANIFEST
+META.yml
 README
 t/00.load.t
 t/kana_address.t
