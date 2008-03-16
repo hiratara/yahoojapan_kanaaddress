@@ -6,7 +6,7 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('0.1.1');
+use version; our $VERSION = qv('0.1.2');
 
 use LWP::UserAgent;
 use URI::Escape;

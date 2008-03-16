@@ -1,5 +1,8 @@
 Revision history for WWW-YahooJapan-KanaAddress
 
+0.1.2  Mon Mar 17 00:08:45 2008
+       add a "pass-through" Makefile.PL.
+
 0.1.1  Sun Mar 16 00:04:24 2008
        fix the problem that perlcritic test was failed 
        if you don't have Test/Perl/Critic.pm.

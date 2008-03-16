@@ -13,6 +13,8 @@ my $builder = Module::Build->new(
         'LWP::UserAgent' => 0,
     },
     add_to_cleanup      => [ 'WWW-YahooJapan-KanaAddress-*' ],
+    create_makefile_pl => 'passthrough',
+    # create_readme => 1, 
 );
 
 $builder->create_build_script();
