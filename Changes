@@ -1,5 +1,8 @@
 Revision history for WWW-YahooJapan-KanaAddress
 
+0.1.3  Mon Jan 12 20:30:00 2009
+       fix bug. (Yahoo! side HTML had been changed.)
+
 0.1.2  Mon Mar 17 00:08:45 2008
        add a "pass-through" Makefile.PL.
 

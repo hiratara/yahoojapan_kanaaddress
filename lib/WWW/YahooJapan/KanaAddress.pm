@@ -6,7 +6,7 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('0.1.2');
+use version; our $VERSION = qv('0.1.3');
 
 use LWP::UserAgent;
 use URI::Escape;
@@ -145,7 +145,7 @@ sub _correct_shiku{
            m{<a [^>]+map\.yahoo\.co\.jp/address\?ac=(\d+)[^>]+>(.+?)</a>}g) {
         push(@codes, [$1, $2]);
     }
-    die "can't determine codes: " . join(',', @codes) if(@codes != 1);
+ die "can't determine codes: " . join(',', @codes) if(@codes != 1);
 
     my ($code, $corrected_shiku) = @{ $codes[0] };
 
@@ -169,7 +169,7 @@ sub _get_kana_dict{
     my $res = $ua->get($url);
     my $c = $res->content();
     my %ret = ();
-    while ($c =~ m{<dd><div class="ruby">(.+?)</div>(.+?)</dd>}g) {
+    while ($c =~ m{<dd[^>]+><div class="ruby">(.+?)</div>(.+?)</dd>}g) {
         my ($kana, $kanji) = $self->_strip_tag($1, $2);
         $ret{$kanji} = $kana;
     }
