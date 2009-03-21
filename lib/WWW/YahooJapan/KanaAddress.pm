@@ -6,8 +6,9 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('0.1.3');
+use version; our $VERSION = qv('0.1.4');
 
+use Encode;
 use LWP::UserAgent;
 use URI::Escape;
 
@@ -168,9 +169,10 @@ sub _get_kana_dict{
     my $ua  = $self->{ua};
     my $res = $ua->get($url);
     my $c = $res->content();
+    Encode::from_to($c, 'utf8', 'eucJP');
     my %ret = ();
-    while ($c =~ m{<dd[^>]+><div class="ruby">(.+?)</div>(.+?)</dd>}g) {
-        my ($kana, $kanji) = $self->_strip_tag($1, $2);
+    while ($c =~ m{<ruby[^>]*>.*?<a[^>]*>(.+?)</a>.*?<rt>(.+?)</rt>.*?</ruby>}g) {
+        my ($kanji, $kana) = $self->_strip_tag($1, $2);
         $ret{$kanji} = $kana;
     }
     return \%ret;
