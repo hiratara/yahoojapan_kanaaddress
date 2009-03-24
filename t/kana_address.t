@@ -2,7 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use WWW::YahooJapan::KanaAddress qw(search);
+use WWW::YahooJapan::KanaAddress;
 
 #===============================================================================
 # Constants

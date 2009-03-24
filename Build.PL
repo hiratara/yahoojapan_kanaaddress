@@ -11,6 +11,7 @@ my $builder = Module::Build->new(
         'Test::More' => 0,
         'version'    => 0,
         'LWP::UserAgent' => 0,
+        'Encode'         => 0,
     },
     add_to_cleanup      => [ 'WWW-YahooJapan-KanaAddress-*' ],
     create_makefile_pl => 'passthrough',

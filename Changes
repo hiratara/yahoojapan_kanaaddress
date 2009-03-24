@@ -1,5 +1,8 @@
 Revision history for WWW-YahooJapan-KanaAddress
 
+0.1.4_2 Tue, 24 Mar 2009
+        fix tiny bugs.
+
 0.1.4  Sat, 21 Mar 2009
        fix bug. (Yahoo! side HTML had been changed again.)
 

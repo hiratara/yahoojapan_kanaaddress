@@ -6,7 +6,7 @@ use warnings;
 use strict;
 use Carp;
 
-use version; our $VERSION = qv('0.1.4');
+use version; our $VERSION = '0.1.4_2';
 
 use Encode;
 use LWP::UserAgent;
