@@ -1,28 +1,67 @@
-WWW-YahooJapan-KanaAddress version 0.1.4_2
+NAME
+    WWW::YahooJapan::KanaAddress - translating the address in Japan into
+    kana.
 
-INSTALLATION
+SYNOPSIS
+        use WWW::YahooJapan::KanaAddress;
 
-To install this module, run the following commands:
+        my $yahoo = WWW::YahooJapan::KanaAddress->new();
+        print $yahoo->search('»³Íü¸©', '³âÂôÄ®', 'Ä»²°'), "\n";
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+    results:
 
-Alternatively, to install with Module::Build, you can use the following commands:
+        ¤ä¤Þ¤Ê¤·¤±¤ó¤«¤¸¤«¤¶¤ï¤Á¤ç¤¦¤È¤ä
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+DESCRIPTION
+    This class translates the address written in Kanji into Kana by using
+    Yahoo! Japan Maps.
+
+  Methods
+    my $yahoo = WWW::YahooJapan::KanaAddress->new( ua => 'your
+    LWP::UserAgent');
+        a constructor. You can set a LWP::UserAgent object if you want.
+
+    my ($kana_ken, $kana_shiku, $kana_choaza) = $yahoo->search($ken, $shiku,
+    $choaza);
+        search kana by Yahoo!Japan Maps. The arguments and return values
+        must be encoded to euc-jp. You can't use unicode string.
+
+        $ken
+          Prefecture in Japan, should be ended with 'ÅÔ' or 'Æ»' or 'ÉÜ' or
+          '¸©'.
+
+        $shiku
+          Name of city and district, should be ended with '»Ô' or '¶è' or 'Ä®'
+          or 'Â¼'.
+
+        $choaza
+          The rest of the string of address. It might contain 'Ä®' and '»ú'.
+
+        You can use a vague address to some degree. For example:
+
+            print $yahoo->search('°ñ¾ë¸©', 'Î¶¥öºê»Ô', 'ÊÆÄ®'), "\n";
+            print $yahoo->search('°ñ¾ë¸©', 'Î¶ºê»Ô', 'ÊÆÄ®'), "\n";
+            print $yahoo->search('°ñ¾ë¸©', 'Îµ¤¬ºê»Ô', 'ÊÆÄ®'), "\n";
+
+        These sentences output the same result. This is a function of
+        Yahoo!Japan Maps.
+
+CONFIGURATION AND ENVIRONMENT
+    WWW::YahooJapan::KanaAddress requires no configuration files or
+    environment variables.
 
 DEPENDENCIES
+    LWP::UserAgent, and Yahoo!Japan :-p
 
-LWP::UserAgent
+INCOMPATIBILITIES
+    None reported.
 
-COPYRIGHT AND LICENCE
+BUGS AND LIMITATIONS
+    No bugs have been reported.
 
-Copyright (C) 2008, Masahiro Honma
+    Please report any bugs or feature requests to "hiratara@cpan.org", or
+    through the web interface at <http://rt.cpan.org>.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+AUTHOR
+    Masahiro Honma "<hiratara@cpan.org>"
+
