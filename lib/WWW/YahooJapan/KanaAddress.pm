@@ -4,6 +4,7 @@ require 5.006;
 
 use warnings;
 use strict;
+use utf8;
 use Carp;
 
 use version; our $VERSION = '0.1.4_2';
@@ -13,56 +14,56 @@ use LWP::UserAgent;
 use URI::Escape;
 
 my %_tdfk_dict = qw/
-ËÌ³¤Æ» ¤Û¤Ã¤«¤¤¤É¤¦
-ÀÄ¿¹¸© ¤¢¤ª¤â¤ê¤±¤ó
-´ä¼ê¸© ¤¤¤ï¤Æ¤±¤ó
-µÜ¾ë¸© ¤ß¤ä¤®¤±¤ó
-½©ÅÄ¸© ¤¢¤­¤¿¤±¤ó
-»³·Á¸© ¤ä¤Ş¤¬¤¿¤±¤ó
-Ê¡Åç¸© ¤Õ¤¯¤·¤Ş¤±¤ó
-°ñ¾ë¸© ¤¤¤Ğ¤é¤­¤±¤ó
-ÆÊÌÚ¸© ¤È¤Á¤®¤±¤ó
-·²ÇÏ¸© ¤°¤ó¤Ş¤±¤ó
-ºë¶Ì¸© ¤µ¤¤¤¿¤Ş¤±¤ó
-ÀéÍÕ¸© ¤Á¤Ğ¤±¤ó
-ÅìµşÅÔ ¤È¤¦¤­¤ç¤¦¤È
-¿ÀÆàÀî¸© ¤«¤Ê¤¬¤ï¤±¤ó
-ÉÙ»³¸© ¤È¤ä¤Ş¤±¤ó
-¿·³ã¸© ¤Ë¤¤¤¬¤¿¤±¤ó
-ÀĞÀî¸© ¤¤¤·¤«¤ï¤±¤ó
-Ê¡°æ¸© ¤Õ¤¯¤¤¤±¤ó
-»³Íü¸© ¤ä¤Ş¤Ê¤·¤±¤ó
-Ä¹Ìî¸© ¤Ê¤¬¤Î¤±¤ó
-´ôÉì¸© ¤®¤Õ¤±¤ó
-ÀÅ²¬¸© ¤·¤º¤ª¤«¤±¤ó
-°¦ÃÎ¸© ¤¢¤¤¤Á¤±¤ó
-»°½Å¸© ¤ß¤¨¤±¤ó
-¼¢²ì¸© ¤·¤¬¤±¤ó
-µşÅÔÉÜ ¤­¤ç¤¦¤È¤Õ
-ÂçºåÉÜ ¤ª¤ª¤µ¤«¤Õ
-Ê¼¸Ë¸© ¤Ò¤ç¤¦¤´¤±¤ó
-ÆàÎÉ¸© ¤Ê¤é¤±¤ó
-ÏÂ²Î»³¸© ¤ï¤«¤ä¤Ş¤±¤ó
-Ä»¼è¸© ¤È¤Ã¤È¤ê¤±¤ó
-Åçº¬¸© ¤·¤Ş¤Í¤±¤ó
-²¬»³¸© ¤ª¤«¤ä¤Ş¤±¤ó
-¹­Åç¸© ¤Ò¤í¤·¤Ş¤±¤ó
-»³¸ı¸© ¤ä¤Ş¤°¤Á¤±¤ó
-ÆÁÅç¸© ¤È¤¯¤·¤Ş¤±¤ó
-¹áÀî¸© ¤«¤¬¤ï¤±¤ó
-°¦É²¸© ¤¨¤Ò¤á¤±¤ó
-¹âÃÎ¸© ¤³¤¦¤Á¤±¤ó
-Ê¡²¬¸© ¤Õ¤¯¤ª¤«¤±¤ó
-º´²ì¸© ¤µ¤¬¤±¤ó
-Ä¹ºê¸© ¤Ê¤¬¤µ¤­¤±¤ó
-·§ËÜ¸© ¤¯¤Ş¤â¤È¤±¤ó
-ÂçÊ¬¸© ¤ª¤ª¤¤¤¿¤±¤ó
-µÜºê¸© ¤ß¤ä¤¶¤­¤±¤ó
-¼¯»ùÅç¸© ¤«¤´¤·¤Ş¤±¤ó
-²­Æì¸© ¤ª¤­¤Ê¤ï¤±¤ó
+åŒ—æµ·é“ ã»ã£ã‹ã„ã©ã†
+é’æ£®çœŒ ã‚ãŠã‚‚ã‚Šã‘ã‚“
+å²©æ‰‹çœŒ ã„ã‚ã¦ã‘ã‚“
+å®®åŸçœŒ ã¿ã‚„ãã‘ã‚“
+ç§‹ç”°çœŒ ã‚ããŸã‘ã‚“
+å±±å½¢çœŒ ã‚„ã¾ãŒãŸã‘ã‚“
+ç¦å³¶çœŒ ãµãã—ã¾ã‘ã‚“
+èŒ¨åŸçœŒ ã„ã°ã‚‰ãã‘ã‚“
+æ ƒæœ¨çœŒ ã¨ã¡ãã‘ã‚“
+ç¾¤é¦¬çœŒ ãã‚“ã¾ã‘ã‚“
+åŸ¼ç‰çœŒ ã•ã„ãŸã¾ã‘ã‚“
+åƒè‘‰çœŒ ã¡ã°ã‘ã‚“
+æ±äº¬éƒ½ ã¨ã†ãã‚‡ã†ã¨
+ç¥å¥ˆå·çœŒ ã‹ãªãŒã‚ã‘ã‚“
+å¯Œå±±çœŒ ã¨ã‚„ã¾ã‘ã‚“
+æ–°æ½ŸçœŒ ã«ã„ãŒãŸã‘ã‚“
+çŸ³å·çœŒ ã„ã—ã‹ã‚ã‘ã‚“
+ç¦äº•çœŒ ãµãã„ã‘ã‚“
+å±±æ¢¨çœŒ ã‚„ã¾ãªã—ã‘ã‚“
+é•·é‡çœŒ ãªãŒã®ã‘ã‚“
+å²é˜œçœŒ ããµã‘ã‚“
+é™å²¡çœŒ ã—ãšãŠã‹ã‘ã‚“
+æ„›çŸ¥çœŒ ã‚ã„ã¡ã‘ã‚“
+ä¸‰é‡çœŒ ã¿ãˆã‘ã‚“
+æ»‹è³€çœŒ ã—ãŒã‘ã‚“
+äº¬éƒ½åºœ ãã‚‡ã†ã¨ãµ
+å¤§é˜ªåºœ ãŠãŠã•ã‹ãµ
+å…µåº«çœŒ ã²ã‚‡ã†ã”ã‘ã‚“
+å¥ˆè‰¯çœŒ ãªã‚‰ã‘ã‚“
+å’Œæ­Œå±±çœŒ ã‚ã‹ã‚„ã¾ã‘ã‚“
+é³¥å–çœŒ ã¨ã£ã¨ã‚Šã‘ã‚“
+å³¶æ ¹çœŒ ã—ã¾ã­ã‘ã‚“
+å²¡å±±çœŒ ãŠã‹ã‚„ã¾ã‘ã‚“
+åºƒå³¶çœŒ ã²ã‚ã—ã¾ã‘ã‚“
+å±±å£çœŒ ã‚„ã¾ãã¡ã‘ã‚“
+å¾³å³¶çœŒ ã¨ãã—ã¾ã‘ã‚“
+é¦™å·çœŒ ã‹ãŒã‚ã‘ã‚“
+æ„›åª›çœŒ ãˆã²ã‚ã‘ã‚“
+é«˜çŸ¥çœŒ ã“ã†ã¡ã‘ã‚“
+ç¦å²¡çœŒ ãµããŠã‹ã‘ã‚“
+ä½è³€çœŒ ã•ãŒã‘ã‚“
+é•·å´çœŒ ãªãŒã•ãã‘ã‚“
+ç†Šæœ¬çœŒ ãã¾ã‚‚ã¨ã‘ã‚“
+å¤§åˆ†çœŒ ãŠãŠã„ãŸã‘ã‚“
+å®®å´çœŒ ã¿ã‚„ã–ãã‘ã‚“
+é¹¿å…å³¶çœŒ ã‹ã”ã—ã¾ã‘ã‚“
+æ²–ç¸„çœŒ ãŠããªã‚ã‘ã‚“
 /;
 
-my $search_url_tpl = 'http://search.map.yahoo.co.jp/search?p=%s&ei=euc-jp';
+my $search_url_tpl = 'http://search.map.yahoo.co.jp/search?p=%s&ei=UTF-8';
 my $kana_url_tpl   = 'http://map.yahoo.co.jp/address?ac=%s';
 
 
@@ -92,11 +93,11 @@ sub _do_freeword_search{
     my $self = shift;
     my $word = shift;
 
-    my $url = sprintf($search_url_tpl, uri_escape($word));
+    my $url = sprintf $search_url_tpl, uri_escape( encode_utf8 $word );
 
     my $ua  = $self->{ua};
     my $res = $ua->get($url);
-    return $res->content();
+    return $res->decoded_content;
 }
 
 
@@ -126,7 +127,7 @@ sub _correct_choaza{
     $corrected_address =~ s/[0-9]+$//;
 
     # chop chome
-    $corrected_address =~ s/[0-9]+ÃúÌÜ$//;
+    $corrected_address =~ s/[0-9]+ä¸ç›®$//;
 
     return $corrected_address;
 }
@@ -168,8 +169,7 @@ sub _get_kana_dict{
 
     my $ua  = $self->{ua};
     my $res = $ua->get($url);
-    my $c = $res->content();
-    Encode::from_to($c, 'utf8', 'eucJP');
+    my $c = $res->decoded_content;
     my %ret = ();
     while ($c =~ m{<ruby[^>]*>.*?<a[^>]*>(.+?)</a>.*?<rt>(.+?)</rt>.*?</ruby>}g) {
         my ($kanji, $kana) = $self->_strip_tag($1, $2);
@@ -235,11 +235,11 @@ WWW::YahooJapan::KanaAddress - translating the address in Japan into kana.
     use WWW::YahooJapan::KanaAddress;
 
     my $yahoo = WWW::YahooJapan::KanaAddress->new();
-    print $yahoo->search('»³Íü¸©', '³âÂôÄ®', 'Ä»²°'), "\n";
+    print $yahoo->search('å±±æ¢¨çœŒ', 'é°æ²¢ç”º', 'é³¥å±‹'), "\n";
 
 results:
 
-    ¤ä¤Ş¤Ê¤·¤±¤ó¤«¤¸¤«¤¶¤ï¤Á¤ç¤¦¤È¤ä
+    ã‚„ã¾ãªã—ã‘ã‚“ã‹ã˜ã‹ã–ã‚ã¡ã‚‡ã†ã¨ã‚„
 
 =head1 DESCRIPTION
 
@@ -261,23 +261,23 @@ search kana by Yahoo!Japan Maps. The arguments and return values must be encoded
 
 =item $ken
 
-Prefecture in Japan, should be ended with 'ÅÔ' or 'Æ»' or 'ÉÜ' or '¸©'.
+Prefecture in Japan, should be ended with 'éƒ½' or 'é“' or 'åºœ' or 'çœŒ'.
 
 =item $shiku
 
-Name of city and district, should be ended with '»Ô' or '¶è' or 'Ä®' or 'Â¼'.
+Name of city and district, should be ended with 'å¸‚' or 'åŒº' or 'ç”º' or 'æ‘'.
 
 =item $choaza
 
-The rest of the string of address. It might contain 'Ä®' and '»ú'.
+The rest of the string of address. It might contain 'ç”º' and 'å­—'.
 
 =back
 
 You can use a vague address to some degree. For example: 
 
-    print $yahoo->search('°ñ¾ë¸©', 'Î¶¥öºê»Ô', 'ÊÆÄ®'), "\n";
-    print $yahoo->search('°ñ¾ë¸©', 'Î¶ºê»Ô', 'ÊÆÄ®'), "\n";
-    print $yahoo->search('°ñ¾ë¸©', 'Îµ¤¬ºê»Ô', 'ÊÆÄ®'), "\n";
+    print $yahoo->search('èŒ¨åŸçœŒ', 'é¾ãƒ¶å´å¸‚', 'ç±³ç”º'), "\n";
+    print $yahoo->search('èŒ¨åŸçœŒ', 'é¾å´å¸‚', 'ç±³ç”º'), "\n";
+    print $yahoo->search('èŒ¨åŸçœŒ', 'ç«œãŒå´å¸‚', 'ç±³ç”º'), "\n";
 
 These sentences output the same result. This is a function of Yahoo!Japan Maps.
 
