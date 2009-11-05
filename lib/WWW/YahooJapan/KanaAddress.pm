@@ -309,3 +309,11 @@ C<hiratara@cpan.org>, or through the web interface at L<http://rt.cpan.org>.
 =head1 AUTHOR
 
 Masahiro Honma  C<< <hiratara@cpan.org> >>
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+
