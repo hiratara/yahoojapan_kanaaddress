@@ -224,7 +224,7 @@ sub search{
 1; # Magic true value required at end of module
 __END__
 
-=encoding euc-jp
+=encoding utf-8
 
 =head1 NAME
 
