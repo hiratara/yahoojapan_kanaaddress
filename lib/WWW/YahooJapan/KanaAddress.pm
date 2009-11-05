@@ -97,7 +97,7 @@ sub _do_freeword_search{
 
     my $ua  = $self->{ua};
     my $res = $ua->get($url);
-    return decode 'euc-jp', $res->content;
+    return $res->decoded_content;
 }
 
 
@@ -169,7 +169,7 @@ sub _get_kana_dict{
 
     my $ua  = $self->{ua};
     my $res = $ua->get($url);
-    my $c = decode_utf8 $res->content;
+    my $c = $res->decoded_content;
     my %ret = ();
     while ($c =~ m{<ruby[^>]*>.*?<a[^>]*>(.+?)</a>.*?<rt>(.+?)</rt>.*?</ruby>}g) {
         my ($kanji, $kana) = $self->_strip_tag($1, $2);
