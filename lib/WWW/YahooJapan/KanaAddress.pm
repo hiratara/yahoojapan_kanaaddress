@@ -255,7 +255,7 @@ a constructor. You can set a LWP::UserAgent object if you want.
 
 =item my ($kana_ken, $kana_shiku, $kana_choaza) = $yahoo->search($ken, $shiku, $choaza);
 
-search kana by Yahoo!Japan Maps. The arguments and return values must be encoded to euc-jp. You can't use unicode string.
+search kana by Yahoo!Japan Maps. The arguments and return values must be unicode strings. ( You can no longer use euc-jp encoded strings from 0.20. )
 
 =over 2
 
