@@ -24,7 +24,8 @@ DESCRIPTION
     my ($kana_ken, $kana_shiku, $kana_choaza) = $yahoo->search($ken, $shiku,
     $choaza);
         search kana by Yahoo!Japan Maps. The arguments and return values
-        must be encoded to euc-jp. You can't use unicode string.
+        must be unicode strings. ( You can no longer use euc-jp encoded
+        strings from 0.20. )
 
         $ken
           Prefecture in Japan, should be ended with '都' or '道' or '府' or

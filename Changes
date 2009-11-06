@@ -1,5 +1,8 @@
 Revision history for WWW-YahooJapan-KanaAddress
 
+0.20 Fri,  6, Nov 2009
+     Use unicode strings.
+
 0.1.4_2 Tue, 24 Mar 2009
         fix tiny bugs.
 

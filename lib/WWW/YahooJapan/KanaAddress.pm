@@ -7,7 +7,7 @@ use strict;
 use utf8;
 use Carp;
 
-use version; our $VERSION = '0.1.4_2';
+use version; our $VERSION = '0.20';
 
 use Encode;
 use LWP::UserAgent;
