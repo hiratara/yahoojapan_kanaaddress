@@ -285,6 +285,8 @@ These sentences output the same result. This is a function of Yahoo!Japan Maps.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
+!!CAUTION!! I no longer maintain this module. It doesn't work and won't be fixed.
+
 WWW::YahooJapan::KanaAddress requires no configuration files or environment variables.
 
 

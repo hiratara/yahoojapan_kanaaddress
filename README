@@ -48,6 +48,9 @@ DESCRIPTION
         Yahoo!Japan Maps.
 
 CONFIGURATION AND ENVIRONMENT
+    !!CAUTION!! I no longer maintain this module. It doesn't work and won't
+    be fixed.
+
     WWW::YahooJapan::KanaAddress requires no configuration files or
     environment variables.
 
